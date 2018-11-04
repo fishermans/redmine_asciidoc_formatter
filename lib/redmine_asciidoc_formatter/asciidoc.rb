@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'open3'
+require 'asciidoctor'
 
 class AsciiDoc
   
@@ -17,28 +17,9 @@ class AsciiDoc
   end
     
   # Converts the object's input to HTML.
-  def to_html(*args)
-    command = "#{@@asciidoc}"
-    args.each do |arg|
-        command += " #{arg}"
-    end
-    command += ' -'
-    execute command
+  def to_html
+    Asciiodctor.convert @target
   end
   
-protected
-  
-  def execute(command)
-    output = ''
-      Open3::popen3(command) do |stdin, stdout, stderr, wait_thr|
-        stdin.puts @target
-        stdin.close
-        output = stdout.read.strip
-        output = stderr.read.strip if output == ''
-        exit_status = wait_thr.value
-      end
-    output
-  end
-
 end
 
