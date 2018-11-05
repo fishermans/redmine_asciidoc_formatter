@@ -3,8 +3,6 @@ require 'asciidoctor'
 
 class AsciiDoc
   
-  @@asciidoc = "asciidoc -a icons -a iconsdir='/redmine/images/icons' -a imagesdir='/redmine/images'"
-
   # Takes a string or file path plus any additional options and converts the input.
   def self.to_html(*args)
     new(*args).to_html
