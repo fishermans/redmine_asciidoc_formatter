@@ -18,7 +18,7 @@ class AsciiDoc
     
   # Converts the object's input to HTML.
   def to_html
-    Asciiodctor.convert @target
+    Asciidoctor.convert @target
   end
   
 end
